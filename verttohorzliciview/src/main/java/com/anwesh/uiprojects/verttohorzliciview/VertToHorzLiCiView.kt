@@ -20,6 +20,7 @@ val sizeFactor : Float = 2.2f
 val strokeFactor : Int = 120
 val scDiv : Double = 0.51
 val scGap : Float = 0.05f
+val DELAY : Long = 25
 
 fun Int.getInverse() : Float = 1f / this
 
@@ -106,7 +107,7 @@ class VertToHorzLiCiView(ctx : Context) : View(ctx) {
             if (animated) {
                 cb()
                 try {
-                    Thread.sleep(50)
+                    Thread.sleep(DELAY)
                     view.invalidate()
                 } catch(ex : Exception) {
 
