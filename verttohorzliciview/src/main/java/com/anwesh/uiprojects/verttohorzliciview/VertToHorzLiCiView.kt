@@ -221,4 +221,12 @@ class VertToHorzLiCiView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity : Activity) : VertToHorzLiCiView {
+            val view : VertToHorzLiCiView = VertToHorzLiCiView(activity)
+            activity.setContentView(view)
+            return view 
+        }
+    }
 }
