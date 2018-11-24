@@ -16,8 +16,8 @@ import android.graphics.Path
 val nodes : Int = 5
 val lines : Int = 5
 val color : Int = Color.parseColor("#4A148C")
-val sizeFactor : Int = 3
-val strokeFactor : Int = 60
+val sizeFactor : Float = 2.2f
+val strokeFactor : Int = 120
 val scDiv : Double = 0.51
 val scGap : Float = 0.05f
 
@@ -49,9 +49,8 @@ fun Canvas.drawVTHNode(i : Int, scale : Float, paint : Paint) {
     path.addCircle(0f, 0f, size, Path.Direction.CW)
     clipPath(path)
     drawPath(path, paint)
-    val yGap : Float = (2 * size) / (lines + 2)
-    var y : Float = size - yGap
-    drawLine(-size, y, size, y, paint)
+    val yGap : Float = (2 * size) / (lines + 1)
+    var y : Float = size
     for (j in 0..(lines - 1)) {
         val sc : Float = sc1.divideScale(j, lines)
         y -= yGap * sc
@@ -85,7 +84,7 @@ class VertToHorzLiCiView(ctx : Context) : View(ctx) {
     data class State(var scale : Float = 0f, var dir : Float =0f, var prevScale : Float = 0f) {
 
         fun update(cb : (Float) -> Unit) {
-            scale += 0.05f * dir
+            scale += scale.updateScale(dir, lines, 1)
             if (Math.abs(scale - prevScale) > 1) {
                 scale = prevScale + dir
                 dir = 0f
@@ -226,7 +225,7 @@ class VertToHorzLiCiView(ctx : Context) : View(ctx) {
         fun create(activity : Activity) : VertToHorzLiCiView {
             val view : VertToHorzLiCiView = VertToHorzLiCiView(activity)
             activity.setContentView(view)
-            return view 
+            return view
         }
     }
 }
