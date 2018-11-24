@@ -197,4 +197,26 @@ class VertToHorzLiCiView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : VertToHorzLiCiView) {
+        private val vth : VerToHorizLiCi = VerToHorizLiCi(0)
+
+        private val animator : Animator = Animator(view)
+
+        fun render(canvas : Canvas, paint : Paint) {
+            canvas.drawColor(Color.parseColor("#BDBDBD"))
+            vth.draw(canvas, paint)
+            animator.animate {
+                vth.update {i, scl ->
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            vth.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
