@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/LinkedVertToHorzLiCiView.iml" filepath="$PROJECT_DIR$/LinkedVertToHorzLiCiView.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/verttohorzliciview/verttohorzliciview.iml" filepath="$PROJECT_DIR$/verttohorzliciview/verttohorzliciview.iml" />
+    </modules>
+  </component>
+</project>
